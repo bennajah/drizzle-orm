@@ -1,5 +1,5 @@
-import type { SQL } from '~/sql/sql.ts';
 import { entityKind } from '~/entity.ts';
+import type { SQL } from '~/sql/sql.ts';
 
 export type FunctionReturns =
   | 'void'

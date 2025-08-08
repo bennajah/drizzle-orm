@@ -1,6 +1,6 @@
-import type { PgTable } from '~/pg-core/table.ts';
-import type { PgFunction } from './functions.ts';
 import { entityKind } from '~/entity.ts';
+import type { PgFunction } from './functions.ts';
+import type { PgTable } from './table.ts';
 
 export type TriggerEvent = 'insert' | 'update' | 'delete';
 export type TriggerType = 'before' | 'after';
