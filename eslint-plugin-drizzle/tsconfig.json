@@ -24,6 +24,7 @@
 	},
 	"include": [
 		"src/**/*.ts",
+		"index.d.ts",
 		"package.json"
 	]
 }

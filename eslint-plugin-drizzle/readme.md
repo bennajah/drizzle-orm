@@ -16,6 +16,29 @@ You can install those packages for typescript support in your IDE
 [ npm | yarn | pnpm | bun ] install @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 
+## TypeScript support
+
+This package ships its own TypeScript declarations, so `import drizzle from "eslint-plugin-drizzle"` works out of the box in `eslint.config.ts`, `eslint.config.mjs`, and any other TypeScript configuration file — no `declare module` workaround or `@types/eslint-plugin-drizzle` package is needed.
+
+The declarations reference the official `eslint` types, so they work both with `@types/eslint` (ESLint v8) and with the types bundled with ESLint v9 and later. If you use ESLint v8, make sure `@types/eslint` is installed in your project (it is already a dependency of the `@typescript-eslint` packages).
+
+Rule options are typed as well. Annotating a config object with `DrizzleFlatConfig` makes TypeScript validate the rule severities and options:
+
+```ts
+import drizzle from "eslint-plugin-drizzle";
+import type { DrizzleFlatConfig } from "eslint-plugin-drizzle";
+
+const drizzleConfig: DrizzleFlatConfig = {
+  plugins: {
+    drizzle,
+  },
+  rules: {
+    "drizzle/enforce-delete-with-where": ["error", { drizzleObjectName: ["db"] }],
+    "drizzle/enforce-update-with-where": ["error", { drizzleObjectName: ["db"] }],
+  },
+};
+```
+
 ## Usage
 
 Create a `.eslintrc.yml` file, add `drizzle` to the `plugins`, and specify the rules you want to use. You can find a list of all existing rules below
@@ -58,6 +81,33 @@ parserOptions:
   project: './tsconfig.json'
 plugins:
   - drizzle
+```
+
+### Flat config
+
+If you use ESLint's flat config format (`eslint.config.js`, `eslint.config.mjs`, or `eslint.config.ts`), import the plugin and register it under the `drizzle` key:
+
+```ts
+import { defineConfig } from "eslint/config";
+import drizzle from "eslint-plugin-drizzle";
+
+export default defineConfig([
+  {
+    plugins: {
+      drizzle,
+    },
+    rules: {
+      "drizzle/enforce-delete-with-where": [
+        "error",
+        { drizzleObjectName: ["db"] },
+      ],
+      "drizzle/enforce-update-with-where": [
+        "error",
+        { drizzleObjectName: ["db"] },
+      ],
+    },
+  },
+]);
 ```
 
 ## Rules

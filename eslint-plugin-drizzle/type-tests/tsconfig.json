@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"noEmit": true,
+		"target": "es2022",
+		"lib": ["es2022"],
+		"module": "esnext",
+		"moduleResolution": "bundler",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"resolveJsonModule": true,
+		"exactOptionalPropertyTypes": true,
+		"paths": {
+			"eslint-plugin-drizzle": ["../index.d.ts"]
+		}
+	},
+	"include": ["*.ts"]
+}

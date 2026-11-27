@@ -23,8 +23,11 @@
 			"inputs": [
 				"src/**/*.ts",
 				"tests/**/*.ts",
+				"type-tests/**/*.ts",
+				"index.d.ts",
 				"tsconfig.json",
 				"tests/tsconfig.json",
+				"type-tests/tsconfig.json",
 				"../tsconfig.json"
 			],
 			"outputLogs": "new-only"
